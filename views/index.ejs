@@ -6,7 +6,12 @@
 </head>
 
 <body>
-    <h1>Welcome to my website!</h1>
+    <!-- this is my comment-->
+    <h1>
+        <%= locals.user || "Please log in" %>
+    </h1>
+    <p><a href="/users">Users Page</a></p>
+    <p><a href="/users/new">Create a new User</a></p>
 </body>
 
 </html>
