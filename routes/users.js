@@ -20,5 +20,9 @@ router.route("/:id").get((req, res)=>{
     res.send(`Updating user with id: ${req.params.id}`);
 });
 
+router.param("id", (req, res, next, id)=> {
+    console.log(`Accessing User #${id}`);
+    next();
+});
 
 module.exports = router;
