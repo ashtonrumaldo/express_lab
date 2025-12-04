@@ -6,15 +6,22 @@ router.get('/', (req, res) => {
     res.render(`users/list`, { users: users });
 });
 router.get('/new', (req, res) => {
-    res.send('New User Form');
+    res.render('users/new', {firstName: ""})
 });
 router.post('/', (req, res) => {
     // res.send("User Created!");
     const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const age = req.body.age;
+    const gender = req.body.gender;
     const isValid = firstName !== "";// Check if they are there, added
     if (isValid) {
-        console.log(`Adding User: ${firstName}`);
-        users.push({ name: firstName });
+        users.push({
+            firstName:firstName,
+            lastName: lastName,
+            gender: gender,
+            age: age,
+        });
         console.log(`New Set of Users: ${users}`);
         res.send("User Created!");
     }
@@ -35,7 +42,10 @@ router.route("/:id").get((req, res) => {
 }).put((req, res) => {
     res.send(`Updating user with id: ${req.params.id}`);
 });
-const users = [{ name: "Butthead" }, { name: "Pompkin" }];
+const users = [
+    {firstName:"Beavis",lastName: "Pompkin", gender: "Male", age: 892},
+    {firstName:"Nigita",lastName: "Gangatron",gender: "Female", age:12}
+];
 
 router.param("id", (req, res, next, id) => {
     console.log(`Accessing User #${id}`);

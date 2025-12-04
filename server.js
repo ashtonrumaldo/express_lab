@@ -18,12 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     console.log('Here');
     res.render("index", { user: "Ashton!" });
-});
-
-app.get('/new', (req, res) => {
-    res.render('users/new', { firstName: "Please enter your name" });
-});
-
+})
 
 app.listen(3030);
 

@@ -6,8 +6,31 @@
 </head>
 
 <body>
+    <h1>Register User</h1>
     <form action="/users" method="post">
-        <input type="text" name="firstName" value="<%= locals.firstName %>">
+        <fieldset>
+            <legend>Name</legend>
+            <label>
+                First Name
+                <input type="text" name="firstName" value="<%= locals.firstName %>" />
+            </label>
+            <br />
+            <label>
+                Last Name
+                <input type="text" name="lastName" value="<%= locals.lastName %>" />
+            </label>
+        </fieldset>
+        <br />
+        <fieldset>
+            <legend>Gender</legend>
+            <label> Male<input type="radio" name="gender" value="male" /> </label>
+            <label>
+                Female<input type="radio" name="gender" value="female" />
+            </label>
+        </fieldset>
+        <br />
+        <label> Age<input type="number" name="age" /> </label>
+        <br />
         <button type="submit">Submit</button>
     </form>
 </body>
