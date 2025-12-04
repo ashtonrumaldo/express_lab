@@ -8,21 +8,27 @@ const app = express(); //Calling this function sets up a server.
 app.set('view engine', 'ejs');
 app.use('/users', userRouter);
 app.use('/posts', userPostsRouter); // for posts assignment
+app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+// app.use(logger);
+
+
+
 
 app.get('/', (req, res) => {
     console.log('Here');
     res.render("index", { user: "Ashton!" });
 });
 
-app.get('/users', (req, res) => {
-    res.send('User List');
+app.get('/new', (req, res) => {
+    res.render('users/new', { firstName: "Please enter your name" });
 });
-
-app.get('/users/new', (req, res) => {
-    res.send('New User Form');
-});
-
 
 
 app.listen(3030);
+
+function logger(req, res, next) {
+    console.log(`Page Accessed: ${req.originalUrl}`);
+    next();
+}
 
